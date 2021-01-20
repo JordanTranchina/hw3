@@ -5,12 +5,42 @@ function pageLoad() {
   // the 'ride' variable contains data about a random ride (i.e. when the page is refreshed or reloaded, the 'ride' variable will contain something different)
   // to get started, try to write other parts of 'ride' to the JavaScript console in Chrome
   // e.g. ask 'ride' for its length or only grab the first member of the Array
-  console.log(ride[0].passengerDetails.first)
+  // console.log(ride.length)
 
   // these variables map to the elements on the finished page;
   // assign the proper value to each variable
 
-  levelOfService = "Tacos"
+  //need to determine total riders
+
+
+  // let totalRiders = ride[0].numberOfPassengers + ride[1].numberOfPassengers + ride[2].numberOfPassengers;
+  // console.log(totalRiders);
+
+
+  // levelOfService = "4"
+
+  if (ride.length > 1) {   // if length of ride is > 1 then level of service = Noober Pool
+    levelOfService = "Noober Pool"
+  } else if (ride[0].purpleRequested == true) {   // if purpleRequest = true, then level of service = Noober Purple = always 1
+    levelOfService = "Noober Purple"
+  } else if (ride[0].numberOfPassengers > 3) {    // if number of total people is > 3, then level of service = Noober XL
+    levelOfService = "Noober XL"
+  } else {
+    levelOfService = "Noober X"
+  }
+
+  console.log(
+    `the ride length is ${ride.length}.
+    `,
+
+    `purpleRequested status is ${ride[0].purpleRequested}.
+    `,
+
+    `the number of passengers is ${ride[0].numberOfPassengers}.
+    `,
+  );
+
+
 
   // // Passenger 1 - Overall
   passenger1Name = `${ride[0].passengerDetails.first} ${ride[0].passengerDetails.last}`;
@@ -22,6 +52,7 @@ function pageLoad() {
   passenger1PickupAddressLine2 = `${ride[0].pickupLocation.city}, ${ride[0].pickupLocation.state} ${ride[0].pickupLocation.zip}`;
   passenger1DropoffAddressLine1 = ride[0].dropoffLocation.address;
   passenger1DropoffAddressLine2 = `${ride[0].dropoffLocation.city}, ${ride[0].dropoffLocation.state} ${ride[0].dropoffLocation.zip}`;
+
 
   // // Passenger 2 - Overall
   passenger2Name = `${ride[1].passengerDetails.first} ${ride[1].passengerDetails.last}`;
